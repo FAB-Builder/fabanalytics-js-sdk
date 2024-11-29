@@ -1,5 +1,7 @@
 //https://github.com/axios/axios/issues/456
 const path = require("path");
+const webpack = require('webpack');
+
 module.exports = {
   mode: "production",
   entry: "./src/index.js",
@@ -20,4 +22,14 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    fallback: {
+      assert: require.resolve('assert/'), // Use the `assert` polyfill
+    },
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser', // Required for Node.js process polyfill
+    }),
+  ],
 };
