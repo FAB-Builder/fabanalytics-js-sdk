@@ -1,6 +1,6 @@
 //https://github.com/axios/axios/issues/456
 const path = require("path");
-const webpack = require('webpack');
+// const webpack = require('webpack');
 
 module.exports = {
   mode: "production",
@@ -22,14 +22,23 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    fallback: {
-      assert: require.resolve('assert/'), // Use the `assert` polyfill
-    },
-  },
-  plugins: [
-    new webpack.ProvidePlugin({
-      process: 'process/browser', // Required for Node.js process polyfill
-    }),
-  ],
+  // resolve: {
+  //   fallback: {
+  //     assert: require.resolve('assert/'), // Use the `assert` polyfill
+  //     http: require.resolve("stream-http"),
+  //     https: require.resolve("https-browserify"),
+  //     os: require.resolve("os-browserify/browser"),
+  //     path: require.resolve("path-browserify"),
+  //     stream: require.resolve("stream-browserify"),
+  //     tty: require.resolve("tty-browserify"),
+  //     url: require.resolve("url/"),
+  //     zlib: require.resolve("browserify-zlib"),
+  //     fs: false,
+  //   },
+  // },
+  // plugins: [
+  //   new webpack.ProvidePlugin({
+  //     process: 'process/browser', // Required for Node.js process polyfill
+  //   }),
+  // ],
 };
