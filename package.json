@@ -1,0 +1,61 @@
+{
+  "name": "fab-analytics",
+  "version": "0.0.1",
+  "description": "SDK for FAB Analytics",
+  "private": false,
+  "files": [
+    "dist"
+  ],
+  "main": "dist/fabanalytics.js",
+  "scripts": {
+    "build:browser": "webpack && cp dist/fabanalytics.js examples/browser",
+    "build:node": "webpack && cp dist/fabanalytics.js examples/node/ && node examples/node/example.js",
+    "build": "npm run build:browser && npm run build:node && webpack && npm run generate:doc",
+    "semantic-release": "semantic-release",
+    "generate:doc": "jsdoc -c conf.json  --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FAB-Builder/fabanalytics-js-sdk.git"
+  },
+  "keywords": [
+    "FAB-Builder",
+    "Analytics"
+  ],
+  "author": "Ishaan Puniani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FAB-Builder/fabanalytics-js-sdk/issues"
+  },
+  "homepage": "https://github.com/FAB-Builder/fabanalytics-js-sdk#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.0",
+    "@babel/preset-env": "^7.12.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@qiwi/semantic-release-gh-pages-plugin": "^5.0.1",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.1.1",
+    "@semantic-release/npm": "^7.0.6",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "babel-loader": "^8.1.0",
+    "husky": "^4.3.0",
+    "jsdoc": "^3.6.6",
+    "minami": "^1.2.3",
+    "webpack": "^5.1.0",
+    "webpack-cli": "^4.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}
