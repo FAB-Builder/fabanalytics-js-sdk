@@ -1,11 +1,12 @@
 //https://github.com/axios/axios/issues/456
 const path = require("path");
 // const webpack = require('webpack');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   mode: "production",
   entry: "./src/index.js",
-  target: "node",
+  // target: "node",
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "fabanalytics.js",
@@ -22,6 +23,7 @@ module.exports = {
       },
     ],
   },
+  plugins: [new NodePolyfillPlugin()],
   // resolve: {
   //   fallback: {
   //     assert: require.resolve('assert/'), // Use the `assert` polyfill
