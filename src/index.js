@@ -1,4 +1,5 @@
 const { ERROR_CODES, DEFAULT } = require("./appConstants");
+const axios = require("axios").default;
 let initConfig, userIdetifier;
 /**
  * fabanalytics client library for easy integration with fabanalytics platform.
@@ -25,17 +26,33 @@ module.exports = {
   setUserIdentifier: (identifier) => {
     userIdetifier = identifier;
   },
-  trace: (src, dest, params, identifier) => {
-    const tracingUrl = `${DEFAULT.API_HOST}/api/tracing`
+  trace: (src, dest, action, params, callback) => {
+    const tracingUrl = `${DEFAULT.API_HOST}/api/tenant/${initConfig.appId}/trace/${userIdetifier}/new`;
     axios
-      .get(tracingUrl)
+      .post(tracingUrl, {
+        "src": src,
+        "dest": dest,
+        "action": action,
+        "params": params,
+        "platform": initConfig.platform || "web",
+        "version": initConfig.version || "version",
+        "packageName": initConfig.packageName || "js",
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
       .then(function (response) {
-        callback(identifier, src, dest, params, response);
+        if (callback) {
+          callback(userIdetifier, src, dest, action, params, response.data);
+        }
       })
       .catch(function (error) {
         console.log(error);
         // handle error
-        callback(undefined, ERROR_CODES.TRACING_REQUEST_FAILED);
+        if (callback) {
+          callback(undefined, ERROR_CODES.TRACING_REQUEST_FAILED);
+        }
       })
       .then(function () {
         // always executed

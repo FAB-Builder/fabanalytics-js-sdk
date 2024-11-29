@@ -4,6 +4,6 @@ module.exports = {
     TRACING_REQUEST_FAILED: "TRACING_REQUEST_FAILED",
   },
   DEFAULT: {
-    API_HOST: "https://analytics.fabbuilder.com/",
+    API_HOST: "https://analytics.fabbuilder.com",
   },
 };
