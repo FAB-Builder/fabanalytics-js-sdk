@@ -28,11 +28,6 @@
     "url": "https://github.com/FAB-Builder/fabanalytics-js-sdk/issues"
   },
   "homepage": "https://github.com/FAB-Builder/fabanalytics-js-sdk#readme",
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "publishConfig": {
     "access": "public"
   },
